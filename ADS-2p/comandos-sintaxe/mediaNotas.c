@@ -15,4 +15,6 @@ int main(int argc, char const *argv[])
     media = (nota1 + nota2 + nota3 + nota4) / 4.0;
     printf("A media das notas informadas é: %f\n", media);
 
+
+    return 0;
 }
