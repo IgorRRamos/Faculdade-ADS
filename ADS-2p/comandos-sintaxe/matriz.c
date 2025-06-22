@@ -6,7 +6,7 @@ int main(int argc, char const *argv[])
 
     for(int i=0;i<4;i++)
     {
-        for(int j=0;j<4;j++)
+        for(int j=0;j< 4;j++)
         {
             printf("Digite a nota do aluno %i: ", i + 1);
             scanf("%f", &notas[i][j]);
@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
     printf("Digite o numero do aluno que deseja calcular a media: ");
     scanf("%i", &escolha);
 
-    for(int i=0;i<4;i++)
+    for(int i=0;i< 4;i++)
     {
         media+=notas[escolha][i];
     }
@@ -27,7 +27,6 @@ int main(int argc, char const *argv[])
     media /= 4;
     
     printf("A media do aluno é: %.1ff\n", media);
-
 
 
     return 0;
