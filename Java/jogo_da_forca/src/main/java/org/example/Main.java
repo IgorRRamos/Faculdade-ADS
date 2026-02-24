@@ -11,32 +11,35 @@ public class Main {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         Palavra palavra = new Palavra();
-        int escolhaOpcao=0;
+        int escolhaOpcao=0, chutes=0;
         String palavraChave;
+        char chuteLetra;
+        String palavraTeste;
+
+        System.out.println("Jogo da forca");
+        System.out.println("Escolha o tema");
+        System.out.println("1 - Natureza");
+        System.out.println("2 - Espaço");
+        System.out.println("3 - Arte");
+        System.out.println("4 - Tecnologia");
+        System.out.println("5 - Alimentação");
+        System.out.println("6 - Musica");
+        System.out.println("7 - Esporte");
+        System.out.println("8 - Livros");
+        System.out.println("9 - Geografia");
+
+        System.out.println();
+        System.out.print("Digite sua escolha: ");
+        escolhaOpcao = teclado.nextInt();
+        palavraChave = palavra.wordKey(escolhaOpcao);
+        System.out.println();
+
+        List<String> palavraEscondida = new ArrayList<>();
+        for (int i = 0; i < palavraChave.length(); i++) {
+            palavraEscondida.add(" * ");
+        }
 
         while(true) {
-            System.out.println("Jogo da forca");
-            System.out.println("Escolha o tema");
-            System.out.println("1 - Natureza");
-            System.out.println("2 - Espaço");
-            System.out.println("3 - Arte");
-            System.out.println("4 - Tecnologia");
-            System.out.println("5 - Alimentação");
-            System.out.println("6 - Musica");
-            System.out.println("7 - Esporte");
-            System.out.println("8 - Livros");
-            System.out.println("9 - Geografia");
-
-            System.out.println();
-            System.out.print("Digite sua escolha: ");
-            escolhaOpcao = teclado.nextInt();
-            palavraChave = palavra.wordKey(escolhaOpcao);
-            System.out.println();
-
-            List<String> palavraEscondida = new ArrayList<>();
-            for (int i = 0; i < palavraChave.length(); i++) {
-                palavraEscondida.add("*");
-            }
 
             for (String lista : palavraEscondida) {
                 System.out.print(lista);
@@ -46,7 +49,34 @@ public class Main {
             System.out.println("A palavra tem " + palavraChave.length() + " letras");
             System.out.println();
 
+            if(chutes < 5){
+                System.out.print("\nDigite uma letra: ");
+                chuteLetra = teclado.next().charAt(0);
+                System.out.println();
+                chutes++;
 
+                for(int i=0; i<palavraEscondida.size();i++){
+                    if(palavraChave.charAt(i) == chuteLetra) {
+                        palavraEscondida.set(i, String.valueOf(chuteLetra));
+                    }
+                }
+            }else{
+                System.out.println("\nVocê precisa acertar a palavra.");
+                System.out.print("Qual é a palavra: ");
+                palavraTeste =  teclado.next();
+                teclado.nextLine();
+
+                if(palavraChave.equals(palavraTeste)){
+                    System.out.println("\nPalavra correta!");
+                    System.out.println("Ganhou!");
+                    chutes = 6;
+                }else{
+                    System.out.println("\nForca");
+                    chutes = 6;
+                }
+            }
+
+            if(chutes > 5) break;
         }
 
 
