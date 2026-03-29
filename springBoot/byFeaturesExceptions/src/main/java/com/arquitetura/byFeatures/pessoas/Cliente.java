@@ -15,10 +15,12 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
+    private String senha;
 
-    public Cliente(long id, String nome) {
+    public Cliente(long id, String nome, String senha) {
         this.id = id;
         this.nome = nome;
+        this.senha = senha;
     }
 
     public Cliente() {

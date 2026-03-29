@@ -16,11 +16,13 @@ public class Livro {
     private long id;
     private String nome;
     private String tittle;
+    private int quantidade;
 
-    public Livro(long id, String nome, String tittle) {
+    public Livro(long id, String nome, String tittle, int quantidade) {
         this.id = id;
         this.nome = nome;
         this.tittle = tittle;
+        this.quantidade = quantidade;
     }
 
     public Livro() {
